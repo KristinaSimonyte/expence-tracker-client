@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getValue } from '@testing-library/user-event/dist/utils';
 
 const TextInput = ({ name, label, type, placeholder, handleChange }) => {
   const [value, setValue ] = useState("");
@@ -13,7 +12,7 @@ const TextInput = ({ name, label, type, placeholder, handleChange }) => {
     return (
     <div className='field'>
         {label && (
-      <label className="label" for={name}>
+      <label className="label" htmlFor={name}>
         {label}
       </label>
         )}

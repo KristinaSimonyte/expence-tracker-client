@@ -1,28 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import TextInput from '../../components/TextInput/TextInput';
 import Button from '../../components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../store/authContext';
 
-const Login = () => {
-  const authCtx = useContext(AuthContext);
-
+const Register = () => {
   const [userDetails, setUserDetails] = useState({
     email: '',
     password: '',
   });
-
   const navigate = useNavigate();
 
-  const onLogin = async (event) => {
-
+  const onRegister = async (event) => {
     event.preventDefault();
-    // console.log(userDetails);
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/auth/login`,
+        `${process.env.REACT_APP_BASE_URL}/auth/register`,
         {
           method: "POST",
           headers: {
@@ -31,14 +25,12 @@ const Login = () => {
           body: JSON.stringify(userDetails),
         }
         );
-       //  console.log(res);
         const data = await res.json();
         if (data.success) {
-         // localStorage.setItem('token', data.data.token);
-          authCtx.login(data.data.token);
+          localStorage.setItem('token', data.data.token);
           // setIsSuccessLogin (true);
           setTimeout(() => {
-            navigate('/transactions');
+            navigate('/login');
           }, 1000);
         }
     } catch (err) {
@@ -48,9 +40,9 @@ const Login = () => {
 
   return (
     <>
-      <Hero title='login' />
+      <Hero title='register' />
       <Section>
-        <form onSubmit={onLogin}>
+        <form onSubmit={onRegister}>
           <TextInput
             label='Email:'
             name='email'
@@ -70,15 +62,15 @@ const Login = () => {
             }
           />
           <Button type='submit' color='primary'>
-            Login
+            Register
           </Button>
         </form>
         <p className='info'>
-          Don't have an account? <Link to='/register'>Register</Link>
+          Already have an account? <Link to='/login'>Login</Link>
         </p>
       </Section>
     </>
   );
 };
 
-export default Login;
+export default Register;
