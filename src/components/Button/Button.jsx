@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as S from './Button.style';
 
 const Button = ({ color, children, type }) => {
   return (
-    <button className={`button ${color}`} type={type}>
+    <S.Button className={`button ${color}`} type={type}>
       {children}
-    </button>
+    </S.Button>
   );
 }; 
 
@@ -16,7 +17,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    color: "secondary",
     type: "button",
 }; 
 

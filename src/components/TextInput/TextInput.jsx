@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import * as S from './TextInput.style';
 
 const TextInput = ({ name, label, type, placeholder, handleChange }) => {
   const [value, setValue ] = useState("");
@@ -12,13 +13,13 @@ const TextInput = ({ name, label, type, placeholder, handleChange }) => {
     return (
     <div className='field'>
         {label && (
-      <label className="label" htmlFor={name}>
+      <S.Label className="label" htmlFor={name}>
         {label}
-      </label>
+      </S.Label>
         )}
 
       <div className="control">
-        <input
+        <S.Input
           className="input" 
           type={type}
           id={name}
