@@ -5,8 +5,11 @@ import Groups from './pages/Groups/Groups';
 
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import TransactionAdd from './pages/Transactions/TransactionAdd';
+import TransactionModify from './pages/Transactions/TransactionModify';
 import Transactions from './pages/Transactions/Transactions';
- import { AuthContext } from './store/authContext';
+import { AuthContext } from './store/authContext';
+
 /*
 const links = [
   { title: 'Login', link: '/login' },
@@ -24,62 +27,83 @@ const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    isUserLoggedIn();
+    const x = isUserLoggedIn();
+    console.log(x);
   }, []);
 
   function login(userToken) {
     localStorage.setItem('token', userToken);
-     setIsLoggedIn(true);
+    setIsLoggedIn(true);
   }
   function logout() {
     localStorage.removeItem('token');
-     setIsLoggedIn(false);
+    setIsLoggedIn(false);
   }
 
   function isUserLoggedIn() {
     if (localStorage.getItem('token')) {
       setIsLoggedIn(true);
-    return true;
-    } 
+      return true;
+    }
     setIsLoggedIn(false);
     return false;
   }
-  
+
   const ctxValue = {
     isLoggedIn,
     login,
     logout,
+    isUserLoggedIn,
   };
   return (
     <AuthContext.Provider value={ctxValue}>
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path='/'
-          element={<ProtectedRoute redirectPage='/login'>
-            <Transactions />
-          </ProtectedRoute>}
-        />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route
-          path='/transactions'
-          element={
-            <ProtectedRoute redirectPage='/login'>
-              <Transactions />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/groups'
-          element={
-            <ProtectedRoute redirectPage='/login'>
-              <Groups />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <Transactions />
+              </ProtectedRoute>
+            }
+          />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route
+            path='/transactions'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <Transactions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/transactions/add'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <TransactionAdd />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/transactions/:id/modify'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <TransactionModify />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/groups'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <Groups />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </AuthContext.Provider>
   );
 };

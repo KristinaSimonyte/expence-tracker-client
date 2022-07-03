@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import TextInput from '../../components/TextInput/TextInput';
 import Button from '../../components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 import { AuthContext } from '../../store/authContext';
 
 const Login = () => {
@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <>
-      <Hero title='login' />
+      <Header />
       <Section>
         <form onSubmit={onLogin}>
           <TextInput

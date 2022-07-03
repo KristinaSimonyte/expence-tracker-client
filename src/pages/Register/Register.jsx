@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import TextInput from '../../components/TextInput/TextInput';
 import Button from '../../components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
 const Register = () => {
   const [userDetails, setUserDetails] = useState({
@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <>
-      <Hero title='register' />
+      <Header title='register' />
       <Section>
         <form onSubmit={onRegister}>
           <TextInput

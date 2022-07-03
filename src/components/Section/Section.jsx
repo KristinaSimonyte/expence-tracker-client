@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as S from './Section.style';
 
 const Section = ({ children }) => {
   return (
-    <section className="section">
+    <S.Section className="section">
         <div className="container">
       {children}
       </div>
-    </section>
+    </S.Section>
   );
 }; 
 

@@ -1,17 +1,27 @@
 import React from 'react';
-import Hero from '../../components/Hero/Hero';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import Header from '../../components/Header/Header';
 import Section from '../../components/Section/Section';
+import TransactionsList from '../../components/TransactionsList/TransactionsList';
+import { getTransactions } from '../../controllers/apiRequests';
 
 
 const Transactions = () => {
+    const [transactions , setTransactions] = useState([]);
+    useEffect(()=>{
+      getTransactions(setTransactions);
+    },[]);
   return (
     <>
-      <Hero title='Transactions' />
+      <Header title='Transactions' />
       <Section>
         <p className='info'>
           Will be information about added transactions
-        </p>
+         
+        </p>        
       </Section>
+      <TransactionsList items = {transactions} />
     </>
   );
 };
