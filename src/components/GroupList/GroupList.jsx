@@ -13,10 +13,14 @@ const GroupList = ({ items }) => {
         navigationHandler('/groups/add')
     }
   return (
+    <>
     <S.Container>
+      <S.List>
       {items && items.map((item) => <Group key={item.id}>{item}</Group>)}
-      <S.Button onClick={addGroupHandler}>Įvesti grupe</S.Button>
+      </S.List>
     </S.Container>
+    <S.Button onClick={addGroupHandler}>Įvesti grupę</S.Button>
+    </>
   );
 };
 

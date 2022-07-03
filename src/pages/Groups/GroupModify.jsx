@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import GroupForm from '../../components/GroupForm/GroupForm';
 import { getGroup, modifyGroup } from '../../controllers/apiRequests';
+import Header from '../../components/Header/Header';
 import * as S from './GroupModify.style';
 
 const GroupModify = () => {
@@ -34,6 +35,8 @@ const GroupModify = () => {
   };
 
   return (
+    <>
+    <Header />
     <S.Container>
       {!!type && <GroupForm
         group={{ id, title, type }}
@@ -44,6 +47,7 @@ const GroupModify = () => {
       <S.Button onClick={handleSubmitGroupAdd}>Keisti grupę</S.Button>
 
     </S.Container>
+    </>
   );
 };
 

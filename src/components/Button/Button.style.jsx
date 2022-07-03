@@ -8,7 +8,7 @@ export const Button = styled.button`
   box-shadow: 0 5px 15px 0 rgb(0 0 0 / 15%);
   color: ${(props) => (props.color === 'primary' ? 'white' : 'white')};
   cursor: pointer;
-  font-size: 2.5vh;
+  font-size: 1rem;
   font-weight: bold;
   padding: 1.5vh 4vh;
   text-transform: capitalize;
@@ -19,9 +19,5 @@ export const Button = styled.button`
     color: ${(props) => (props.color === 'primary' ? '#507E67' : 'green')};
     transition: ease 0.2s;
   }
-
-//   @media screen and (max-width: 426px) {
-//     font-size: 2.5vh;
-//     padding: 1vh 0;
-//   }
+}
 `;

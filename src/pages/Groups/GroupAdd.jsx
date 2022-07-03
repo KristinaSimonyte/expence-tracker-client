@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GroupForm from '../../components/GroupForm/GroupForm';
 import { addGroup } from '../../controllers/apiRequests';
+import Header from '../../components/Header/Header';
 import * as S from './GroupAdd.style';
 
 const GroupAdd = () => {
@@ -22,6 +23,7 @@ const GroupAdd = () => {
 
   return (
     <S.Container>
+      <Header />
       <GroupForm
         group={{}}
         setTitle={setTitle}

@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import * as S from './Group.style';
 
 const Group = ({ children }) => {
   return (
-    <>
-      <div className='group'>
-        <div className='single-group'>{children.type}</div>
-      </div>
-
-      <div className='group'>
-        <div className='single-group'>{children.group_title}</div>
-      </div>
-      <Link to={`/groups/${children.id}/modify`} >Koreguoti grupę</Link>
-    </>
+    <S.Container>
+      <S.Row>
+        <S.Type>{children.type}</S.Type>
+        <S.Title>{children.group_title}</S.Title>
+        <S.List>
+        <Link to={`/groups/${children.id}/modify`}>Koreguoti grupę</Link>
+        </S.List>
+      </S.Row>
+    </S.Container>
   );
 };
 

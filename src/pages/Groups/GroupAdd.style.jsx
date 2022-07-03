@@ -11,7 +11,7 @@ export const Button = styled.button`
   box-shadow: 0 5px 15px 0 rgb(0 0 0 / 15%);
   color: ${(props) => (props.color === 'primary' ? 'white' : 'white')};
   cursor: pointer;
-  font-size: 2.5vh;
+  font-size: 1rem;
   font-weight: bold;
   padding: 1.5vh 4vh;
   text-transform: capitalize;
