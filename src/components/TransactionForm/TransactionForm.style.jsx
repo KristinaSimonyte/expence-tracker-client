@@ -46,4 +46,5 @@ export const Label = styled.label`
   }
 `;
 export const SelectGroup = styled(Select)`
+width: 50%;
 `;

@@ -19,7 +19,7 @@ const TransactionRow = ({ id, amount, transactionDate, type, comment }) => {
       <S.Td>{amount}</S.Td>
       <S.Td>{comment}</S.Td>
       <S.Td>
-        <S.Modify to={`/transactions/${id}/modify`}>Modify</S.Modify>
+        <S.Modify to={`/transactions/${id}/modify`}>Redaguoti</S.Modify>
       </S.Td>
     </S.Tr>
   );
