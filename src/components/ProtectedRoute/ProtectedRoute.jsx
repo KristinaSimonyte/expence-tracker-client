@@ -1,22 +1,24 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
-import {AuthContext} from '../../store/authContext';
+import { AuthContext } from '../../store/authContext';
 
-const  ProtectedRoute = ({ children, redirectPage }) => {
-  const authCtx = useContext(AuthContext);
+const ProtectedRoute = ({ children, redirectPage }) => {
+  const authContext = useContext(AuthContext);
+ 
 
-  console.log(authCtx.isLoggedIn);
-  if (authCtx.isLoggedIn) {
+  //console.log(authContext.isUserLoggedIn());
+
+  if (authContext.isLoggedIn) {
     return children;
   } else {
     return <Navigate to={redirectPage} />;
   }
-}
+};
 
 ProtectedRoute.propTypes = {
-    children: PropTypes.node.isRequired,
-    redirectPage: PropTypes.string.isRequired,
-  };
-  
+  children: PropTypes.node.isRequired,
+  redirectPage: PropTypes.string.isRequired,
+};
+
 export default ProtectedRoute;

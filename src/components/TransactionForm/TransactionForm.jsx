@@ -2,6 +2,7 @@ import * as S from './TransactionForm.style';
 
 const TransactionForm = ({
   transaction,
+  groupOptions,
   setAmount,
   setComment,
   setGroupId,
@@ -13,9 +14,13 @@ const TransactionForm = ({
     <S.FormContainer>
       <S.InputBox>
         <S.Label>Grupės pavadinimas</S.Label>
-        <S.Input
-          value={transaction?.groupId}
-          onChange={(e) => setGroupId(e.target.value)}
+        <S.SelectGroup options={groupOptions} 
+        value={groupOptions.filter((option)=>{
+          return option.value === transaction?.groupId
+        })[0]}
+        onChange={(e) => {
+          setGroupId(e.value);
+        }}
         />
       </S.InputBox>
       <S.InputBox>

@@ -1,3 +1,4 @@
+import Select from 'react-select';
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
@@ -44,4 +45,5 @@ export const Label = styled.label`
     display: none;
   }
 `;
-
+export const SelectGroup = styled(Select)`
+`;

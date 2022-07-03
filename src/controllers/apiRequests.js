@@ -42,7 +42,6 @@ async function makeDelete(endPointUrl, postData) {
 const getTransactions = async (setState) => {
   const transactionsData = await makeGetAll(transactionsEndPoint);
   if (transactionsData.success === true) {
-    console.log(transactionsData.data);
     setState(transactionsData.data);
   }
 };

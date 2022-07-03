@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Header } from '../../components/Header/Header.style';
+import Header from '../../components/Header/Header';
 import TransactionForm from '../../components/TransactionForm/TransactionForm';
 import {
+  getGroups,
   getTransaction,
   modifyTransaction,
 } from '../../controllers/apiRequests';
@@ -16,8 +17,20 @@ const TransactionModify = () => {
   const [amount, setAmount] = useState('');
   const [comment, setComment] = useState('');
   const [groupId, setGroupId] = useState('');
+  const [groups, setGroups] = useState([]);
+  const [groupOptions, setGroupOptions] = useState([]);
 
-  
+  useEffect(() => {
+    getGroups(setGroups);
+  }, []);
+
+  useEffect(() => {
+    const groupList = groups.map((group) => {
+      return { value: group.id, label: group.group_title };
+    });
+    setGroupOptions(groupList);
+  }, [groups]);
+
   useEffect(() => {
     getTransaction(id, setTransactionData);
   }, [id]);
@@ -51,7 +64,8 @@ const TransactionModify = () => {
       <Header />
       <h1>Modify transaction form</h1>
       <TransactionForm
-        transaction={{id, amount, transactionDate, comment, groupId}}
+        transaction={{ id, amount, transactionDate, comment, groupId }}
+        groupOptions={groupOptions}
         setAmount={setAmount}
         setComment={setComment}
         setGroupId={setGroupId}

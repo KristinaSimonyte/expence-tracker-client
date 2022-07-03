@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import GroupAdd from './pages/Groups/GroupAdd';
@@ -12,27 +12,10 @@ import TransactionModify from './pages/Transactions/TransactionModify';
 import Transactions from './pages/Transactions/Transactions';
 import { AuthContext } from './store/authContext';
 
-/*
-const links = [
-  { title: 'Login', link: '/login' },
-  { title: 'Register', link: '/register' },
-  { title: 'Groups', link: '/groups', private: true },
-  { title: 'Add group', link: '/groups/add', private: true },
-  { title: 'Modify group', link: '/groups/modify', private: true },
-  { title: 'Transactions', link: '/transactions', private: true },
-  { title: 'Add Transactions', link: '/transactions/add', private: true },
-  { title: 'Modify Transactions', link: '/transactions/modify', private: true },
-];
-*/
 const Router = () => {
-  // const authContext = useContext(AuthContext);
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const x = isUserLoggedIn();
-    console.log(x);
-  }, []);
-
+  
   function login(userToken) {
     localStorage.setItem('token', userToken);
     setIsLoggedIn(true);
