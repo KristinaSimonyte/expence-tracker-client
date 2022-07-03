@@ -20,7 +20,6 @@ const TransactionRow = ({ id, amount, transactionDate, type, comment }) => {
       <S.Td>{comment}</S.Td>
       <S.Td>
         <S.Modify to={`/transactions/${id}/modify`}>Modify</S.Modify>
-        <S.Button onClick={handeleTransactionDelete}>Ištrinti eilutę</S.Button>
       </S.Td>
     </S.Tr>
   );
