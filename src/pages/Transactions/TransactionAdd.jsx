@@ -20,10 +20,12 @@ const TransactionAdd = () => {
   }, []);
 
   useEffect(() => {
+    console.log(groups);
+    if (groups.length>0) {
     const groupList = groups.map((group) => {
       return { value: group.id, label: group.group_title };
     });
-    setGroupOptions(groupList);
+    setGroupOptions(groupList);}
   }, [groups]);
 
   const saveTransactionHandle = async (event) => {

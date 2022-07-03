@@ -9,10 +9,11 @@ const Groups = () => {
   useEffect(() => {
     getGroups(setGroups);
   }, []);
+  console.log(groups);
   return (
     <S.Container>
       <Header />
-      <GroupList items={groups} />
+     {groups && <GroupList items={groups} />}
     </S.Container>
   );
 };

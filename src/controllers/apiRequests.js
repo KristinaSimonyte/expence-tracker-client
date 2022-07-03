@@ -68,11 +68,13 @@ const getGroups = async (setState) => {
   const groupData = await makeGetAll(groupEndPoint);
   if (groupData.success === true) {
     setState(groupData.data);
+  } else {
+    setState([]);
   }
 };
 const getGroup = async (groupId, setState) => {
   const groupData = await makeGet(groupEndPoint, groupId);
-  if (groupData.success === true) {
+  if (groupData.success === true && groupData.data.length>0) {
     setState(groupData.data[0]);
   }
 };

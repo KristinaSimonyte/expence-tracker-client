@@ -16,7 +16,7 @@ const GroupList = ({ items }) => {
     <>
     <S.Container>
       <S.List>
-      {items && items.map((item) => <Group key={item.id}>{item}</Group>)}
+      {items.length>0 && items.map((item) => (<Group key={item.id}>{item}</Group>))}
       </S.List>
     </S.Container>
     <S.Button onClick={addGroupHandler}>Įvesti grupę</S.Button>

@@ -21,7 +21,7 @@ function addTransactionHandler(event){
         </S.Tr>
       </S.THead>
       <S.TBody>
-        {props.items?.map((transaction) => (
+        {props.items && props.items?.map((transaction) => (
             
           <TransactionRow
             key={transaction.id}
