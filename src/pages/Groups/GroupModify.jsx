@@ -17,7 +17,6 @@ const GroupModify = () => {
   }, [id]);
 
   useEffect(() => {
-    console.log(group);
     setType(group.type);
     setTitle(group.group_title);
   }, [group]);
@@ -30,18 +29,20 @@ const GroupModify = () => {
       title,
     });
     if (resp.success === true) {
-      navigationHandler('/transactions');
+      navigationHandler('/groups');
     }
   };
 
   return (
     <S.Container>
-      <GroupForm
+      {!!type && <GroupForm
         group={{ id, title, type }}
         setTitle={setTitle}
         setType={setType}
-        handleSubmitGroupAdd={handleSubmitGroupAdd}
       ></GroupForm>
+}
+      <S.Button onClick={handleSubmitGroupAdd}>Keisti grupę</S.Button>
+
     </S.Container>
   );
 };

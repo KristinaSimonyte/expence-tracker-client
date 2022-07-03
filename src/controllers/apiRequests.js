@@ -70,7 +70,7 @@ const getGroups = async (setState) => {
 const getGroup = async (groupId, setState) => {
   const groupData = await makeGet(groupEndPoint, groupId);
   if (groupData.success === true) {
-    setState(groupData.data);
+    setState(groupData.data[0]);
   }
 };
 const deleteGroup = async (groupId) => {
