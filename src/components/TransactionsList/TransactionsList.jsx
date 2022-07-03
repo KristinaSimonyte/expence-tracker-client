@@ -12,13 +12,13 @@ function addTransactionHandler(event){
     <>
     <S.Table>
       <S.THead>
-        <S.Th>
-          <S.Td> Grupės pavadinimas</S.Td>
-          <S.Td>Išlaidų/Pajamų data</S.Td>
-          <S.Td>Suma, EUR</S.Td>
-          <S.Td>Komentaras</S.Td>
-          <S.Td>Redaguoti</S.Td>
-        </S.Th>
+        <S.Tr>
+          <S.Th> Grupės pavadinimas</S.Th>
+          <S.Th>Išlaidų/Pajamų data</S.Th>
+          <S.Th>Suma, EUR</S.Th>
+          <S.Th>Komentaras</S.Th>
+          <S.Th>Redaguoti</S.Th>
+        </S.Tr>
       </S.THead>
       <S.TBody>
         {props.items?.map((transaction) => (

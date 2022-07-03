@@ -4,27 +4,26 @@ export const THead = styled.thead`
   padding: 4rem;
 `;
 export const Table = styled.table`
-padding-top: 4rem;
-padding-left: 4rem;
 text-align: left;
   position: relative;
-  border-collapse: collapse; 
+  border-collapse:separate; 
+  border-spacing:1em;
+
 `;
 
 export const TBody = styled.tbody`
-font-size: 1rem;
 font-color: black;
 `;
-export const Th = styled.th`
-font-size: 1rem;
+export const Tr = styled.tr`
 font-color: black;
 padding: 0.25rem;
  background: white;
   position: sticky;
   top: 0;
+  
 `;
-export const Td = styled.td`
-font-size: 1rem;
+export const Th = styled.th`
+font-size: 1.2rem;
 font-color: black;
 padding: 0.25rem;
 `;

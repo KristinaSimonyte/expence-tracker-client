@@ -12,14 +12,14 @@ const TransactionForm = ({
   return (
     <S.FormContainer>
       <S.InputBox>
-        <S.Label>Group ID</S.Label>
+        <S.Label>Grupės pavadinimas</S.Label>
         <S.Input
           value={transaction?.groupId}
           onChange={(e) => setGroupId(e.target.value)}
         />
       </S.InputBox>
       <S.InputBox>
-        <S.Label>Date</S.Label>
+        <S.Label>Išlaidų/Pajamų data</S.Label>
         <S.Input
           type='date'
           value={transaction?.transactionDate}
@@ -28,7 +28,7 @@ const TransactionForm = ({
         />
       </S.InputBox>
       <S.InputBox>
-        <S.Label>Amount</S.Label>
+        <S.Label>Suma, EUR</S.Label>
         <S.Input
         type='number'
           value={transaction?.amount}
@@ -36,7 +36,7 @@ const TransactionForm = ({
         />
       </S.InputBox>
       <S.InputBox>
-        <S.Label>Comment</S.Label>
+        <S.Label>Komentaras</S.Label>
         <S.Input
           value={transaction?.comment}
           onChange={(e) => {setComment(e.target.value)}}

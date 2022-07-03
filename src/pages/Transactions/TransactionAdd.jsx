@@ -32,13 +32,13 @@ const TransactionAdd = () => {
     return (
         <>
          <Header />
-        <h1>add transaction form</h1>
+        <h1>Išlaidų/Pajamų įvedimas</h1>
         <TransactionForm transaction={{}}
         setAmount={setAmount}
         setComment={setComment}
         setGroupId={setGroupId}
         setTransactionDate={setTransactionDate}/>
-        <S.Button onClick={saveTransactionHandle}>Save</S.Button>
+        <S.Button onClick={saveTransactionHandle}>Išsaugoti</S.Button>
         </>
     );
 }

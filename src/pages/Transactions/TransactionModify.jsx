@@ -57,7 +57,7 @@ const TransactionModify = () => {
         setGroupId={setGroupId}
         setTransactionDate={setTransactionDate}
       />
-      <S.Button onClick={saveTransactionHandle}>Save</S.Button>
+      <S.Button onClick={saveTransactionHandle}>Išsaugoti</S.Button>
     </>
   );
 };
