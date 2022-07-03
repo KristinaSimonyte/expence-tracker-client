@@ -8,8 +8,8 @@ export const Nav = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  font-size: 1rem;
-  color: darkblue;
+  font-size: 1.3rem;
+  color: #194D33;
   &:hover {
     color: white;
     border-bottom: 1px solid white;

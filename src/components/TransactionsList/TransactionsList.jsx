@@ -11,6 +11,15 @@ function addTransactionHandler(event){
   return (
     <>
     <S.Table>
+      <S.THead>
+        <S.Th>
+          <S.Td> Grupės pavadinimas</S.Td>
+          <S.Td>Išlaidų/Pajamų data</S.Td>
+          <S.Td>Suma, EUR</S.Td>
+          <S.Td>Komentaras</S.Td>
+          <S.Td>Redaguoti</S.Td>
+        </S.Th>
+      </S.THead>
       <S.TBody>
         {props.items?.map((transaction) => (
             
@@ -25,7 +34,7 @@ function addTransactionHandler(event){
         ))}
       </S.TBody>
     </S.Table>
-    <button onClick={addTransactionHandler}>add transaction</button>
+    <S.Button onClick={addTransactionHandler}>Įvesti išlaidas/pajamas</S.Button>
     </>
   );
 }

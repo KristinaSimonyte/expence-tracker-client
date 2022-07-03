@@ -9,5 +9,7 @@ export default {
 export const Default = () => (
 <Group>
     Lorem ipsum 
+    Lorem ipsum
+    Lorem ipsum
 </Group>
 );

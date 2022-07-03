@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Row = styled.tr`
-  
+export const Tr = styled.tr`
+font-size: 1rem;
+font-color: black;
 `;
-
-export const Cell = styled.td`
-  
+export const Td = styled.td`
+font-size: 1rem;
+font-color: black;
 `;
 
 export const Modify = styled(Link)`

@@ -6,7 +6,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #CFE3F6;
+  background-color: #b2efd1;
   width: calc(100% - 4rem);
   z-index: 10;
 
@@ -26,7 +26,7 @@ export const Header = styled.header`
 
     a.menu {
       display: block;
-      background-color: #CFE3F6;
+      background-color: #cfe3f6;
       border-radius: 3px;
       padding: 1rem;
       border: 1px solid white;
@@ -34,7 +34,7 @@ export const Header = styled.header`
 
     a.menu:hover {
       background-color: white;
-      color: #6c11b7;
+      color: #507e67;
     }
 
     @media screen and (max-width: 900px) {
@@ -63,20 +63,14 @@ export const MenuDiv = styled.div`
     padding: 2rem;
     color: white;
   }
-
-  @media screen and (min-width: 1000px) {
-    display: none;
-  }
 `;
 
-export const MenuLink = styled(Link)`
-  @media screen and (max-width: 1000px) {
-    color: black;
+export const MenuLink = styled(Link)` {
+    color: #6c11b7;
     text-decoration: none;
     padding: 2rem 0;
-
-    :hover {
-      color: black;
+    font-size: 1.3rem;
+    color: #194D33;
     }
   }
 `;
@@ -86,7 +80,7 @@ export const Button = styled.button`
   border-radius: 5px;
   border: 1px solid white;
   box-shadow: 0 5px 15px 0 rgb(0 0 0 / 15%);
-  color: white;
+  color: #507e67;
   cursor: pointer;
   font-weight: bold;
   padding: 0.75rem 2rem;

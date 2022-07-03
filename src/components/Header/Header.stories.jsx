@@ -9,3 +9,4 @@ export default {
 export const Default = () => (
   <Header>Asmeninio biudžeto valdymas</Header>
 );
+

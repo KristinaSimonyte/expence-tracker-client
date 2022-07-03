@@ -5,13 +5,13 @@ import * as S from './TransactionRow.style';
 const TransactionRow = ({ id, amount, transactionDate, type, comment }) => {
  
     return (
-    <S.Row>
-      <S.Cell>{type}</S.Cell>
-      <S.Cell>{new Date(transactionDate).toLocaleDateString('en-CA')}</S.Cell>
-      <S.Cell>{amount}</S.Cell>
-      <S.Cell>{comment}</S.Cell>
-      <S.Cell><S.Modify to={`/transactions/${id}/modify`}>Modify</S.Modify></S.Cell>
-    </S.Row>
+    <S.Tr>
+      <S.Td>{type}</S.Td>
+      <S.Td>{new Date(transactionDate).toLocaleDateString('en-CA')}</S.Td>
+      <S.Td>{amount}</S.Td>
+      <S.Td>{comment}</S.Td>
+      <S.Td><S.Modify to={`/transactions/${id}/modify`}>Modify</S.Modify></S.Td>
+    </S.Tr>
   );
 };
 

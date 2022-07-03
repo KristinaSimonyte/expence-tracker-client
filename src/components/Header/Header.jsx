@@ -46,7 +46,7 @@ const Header = ({ find }) => {
           to={'/login'}
           hidden={!authCtx.isLoggedIn}
         >
-          Atsijungti {!authCtx.isLoggedIn ? '1' : '2'}
+          Atsijungti
         </S.MenuLink>
       </S.MenuDiv>
     </S.Header>
