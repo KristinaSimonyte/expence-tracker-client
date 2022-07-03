@@ -1,4 +1,8 @@
-import { groupEndPoint, transactionsEndPoint } from './apiEndPoints';
+import {
+  balanceEndPoint,
+  groupEndPoint,
+  transactionsEndPoint,
+} from './apiEndPoints';
 
 const getToken = () => {
   const token = localStorage.getItem('token');
@@ -82,8 +86,10 @@ const modifyGroup = async (group) => {
   return await makePut(groupEndPoint, group);
 };
 const getBalance = async (setState) => {
-  const balanceData = await makeGet(groupEndPoint, null);
-  setState(balanceData);
+  const balanceData = await makeGetAll(balanceEndPoint);
+  if (balanceData.success === true) {
+    setState(balanceData.data[0]);
+  }
 };
 
 export {

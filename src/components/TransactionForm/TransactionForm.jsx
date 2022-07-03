@@ -15,6 +15,7 @@ const TransactionForm = ({
       <S.InputBox>
         <S.Label>Grupės pavadinimas</S.Label>
         <S.SelectGroup options={groupOptions} 
+        required
         value={groupOptions.filter((option)=>{
           return option.value === transaction?.groupId
         })[0]}
@@ -26,6 +27,7 @@ const TransactionForm = ({
       <S.InputBox>
         <S.Label>Išlaidų/Pajamų data</S.Label>
         <S.Input
+        required
           type='date'
           value={transaction?.transactionDate}
           onChange={(e) => {console.log(e.target.value);
@@ -35,6 +37,7 @@ const TransactionForm = ({
       <S.InputBox>
         <S.Label>Suma, EUR</S.Label>
         <S.Input
+        required
         type='number'
           value={transaction?.amount}
           onChange={(e) => setAmount(e.target.value)}
