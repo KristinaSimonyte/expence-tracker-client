@@ -41,15 +41,15 @@ async function makeDelete(endPointUrl, postData) {
 
 const getTransactions = async (setState) => {
   const transactionsData = await makeGetAll(transactionsEndPoint);
-  if(transactionsData.success === true){
+  if (transactionsData.success === true) {
     console.log(transactionsData.data);
     setState(transactionsData.data);
-    }
+  }
 };
 const getTransaction = async (transactionId, setState) => {
   const transactionsData = await makeGet(transactionsEndPoint, transactionId);
-  if(transactionsData.success === true){
-  setState(transactionsData.data[0]);
+  if (transactionsData.success === true) {
+    setState(transactionsData.data[0]);
   }
 };
 const modifyTransaction = async (transaction) => {
@@ -62,12 +62,16 @@ const addTransaction = async (transaction) => {
   return await makePost(transactionsEndPoint, transaction);
 };
 const getGroups = async (setState) => {
-  const balanceData = await makeGetAll(groupEndPoint);
-  setState(balanceData);
+  const groupData = await makeGetAll(groupEndPoint);
+  if (groupData.success === true) {
+    setState(groupData.data);
+  }
 };
 const getGroup = async (groupId, setState) => {
-  const balanceData = await makeGet(groupEndPoint, groupId);
-  setState(balanceData);
+  const groupData = await makeGet(groupEndPoint, groupId);
+  if (groupData.success === true) {
+    setState(groupData.data);
+  }
 };
 const deleteGroup = async (groupId) => {
   return await makeDelete(groupEndPoint, { groupId });

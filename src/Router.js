@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import GroupAdd from './pages/Groups/GroupAdd';
+import GroupModify from './pages/Groups/GroupModify';
 import Groups from './pages/Groups/Groups';
 
 import Login from './pages/Login/Login';
@@ -99,6 +101,24 @@ const Router = () => {
             element={
               <ProtectedRoute redirectPage='/login'>
                 <Groups />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/groups/add'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <GroupAdd />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/groups/:id/modify'
+            element={
+              <ProtectedRoute redirectPage='/login'>
+                <GroupModify />
               </ProtectedRoute>
             }
           />
