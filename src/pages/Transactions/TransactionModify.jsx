@@ -16,14 +16,11 @@ const TransactionModify = () => {
   const [amount, setAmount] = useState('');
   const [comment, setComment] = useState('');
   const [groupId, setGroupId] = useState('');
-  const [transactionId, setTransactionId] = useState('');
 
+  
   useEffect(() => {
-    setTransactionId(id);
+    getTransaction(id, setTransactionData);
   }, [id]);
-  useEffect(() => {
-    getTransaction(transactionId, setTransactionData);
-  }, [transactionId]);
 
   useEffect(() => {
     setTransactionDate(
@@ -38,7 +35,7 @@ const TransactionModify = () => {
   const saveTransactionHandle = async (event) => {
     event.preventDefault();
     const resp = await modifyTransaction({
-      id: transactionId,
+      id,
       groupId,
       transactionDate,
       amount,
@@ -54,7 +51,7 @@ const TransactionModify = () => {
       <Header />
       <h1>Modify transaction form</h1>
       <TransactionForm
-        transaction={(transactionId, amount, transactionDate, comment, groupId)}
+        transaction={{id, amount, transactionDate, comment, groupId}}
         setAmount={setAmount}
         setComment={setComment}
         setGroupId={setGroupId}
