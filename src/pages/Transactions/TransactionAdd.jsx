@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components/Header/Header.style';
 import TransactionForm from '../../components/TransactionForm/TransactionForm';
-import { addTransaction, getTransaction } from '../../controllers/apiRequests';
+import { addTransaction } from '../../controllers/apiRequests';
 import * as S from './TransactionAdd.style';
 
 const TransactionAdd = () => {
-
-    const [transactionData, setTransactionData] = useState({});
 
     const navigationHandler = useNavigate();
 
@@ -35,7 +33,7 @@ const TransactionAdd = () => {
         <>
          <Header />
         <h1>add transaction form</h1>
-        <TransactionForm transaction={transactionData}
+        <TransactionForm transaction={{}}
         setAmount={setAmount}
         setComment={setComment}
         setGroupId={setGroupId}
