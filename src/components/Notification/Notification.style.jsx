@@ -5,5 +5,6 @@ export const Message = styled.div`
   flex-direction: column;
   color: red;
   padding: 1rem;
-  margin: 2rem;
+  margin: 1rem;
+  text-size
 `;
