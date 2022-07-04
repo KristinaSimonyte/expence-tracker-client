@@ -22,12 +22,12 @@ const GroupAdd = () => {
       title,
       type,
     });
-    console.log(resp);
+    
     if (resp.success === true) {
       navigationHandler('/groups');
     } else {
       setErrorStatus(true);
-      setErrorMessage(resp.error);
+      setErrorMessage(resp.error[0][0]?.message || resp.error[0]|| 'Klaida sukuriant grupę');
     }
   };
 
