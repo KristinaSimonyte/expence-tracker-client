@@ -31,7 +31,7 @@ function TransactionsList(props) {
                 amount={transaction.amount}
                 type={props.groups?.filter((option)=>{
                   return option.value === transaction?.group_id
-                })[0].label}
+                })[0]?.label || 'Undefined'}
                 comment={transaction.comment}
               />
             ))}

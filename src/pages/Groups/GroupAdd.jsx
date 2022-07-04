@@ -15,8 +15,8 @@ const GroupAdd = () => {
 
   const handleSubmitGroupModify = async (event) => {
     event.preventDefault();
-    setErrorStatus(true);
-    setErrorMessage(false);
+    setErrorStatus(false);
+    setErrorMessage('');
 
     const resp = await addGroup({
       title,
