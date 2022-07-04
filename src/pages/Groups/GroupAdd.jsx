@@ -17,17 +17,23 @@ const GroupAdd = () => {
     event.preventDefault();
     setErrorStatus(false);
     setErrorMessage('');
+    try {
+      const resp = await addGroup({
+        title,
+        type,
+      });
 
-    const resp = await addGroup({
-      title,
-      type,
-    });
-    
-    if (resp.success === true) {
-      navigationHandler('/groups');
-    } else {
+      if (resp.success === true) {
+        navigationHandler('/groups');
+      } else {
+        setErrorStatus(true);
+        setErrorMessage(
+          resp.error[0][0]?.message || resp.error[0] || 'Klaida sukuriant grupę'
+        );
+      }
+    } catch (err) {
       setErrorStatus(true);
-      setErrorMessage(resp.error[0][0]?.message || resp.error[0]|| 'Klaida sukuriant grupę');
+      setErrorMessage(err.message);
     }
   };
 

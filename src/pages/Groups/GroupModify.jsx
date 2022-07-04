@@ -5,6 +5,7 @@ import GroupForm from '../../components/GroupForm/GroupForm';
 import { getGroup, modifyGroup } from '../../controllers/apiRequests';
 import Header from '../../components/Header/Header';
 import * as S from './GroupModify.style';
+import Notification from '../../components/Notification/Notification';
 
 const GroupModify = () => {
   const { id } = useParams();
@@ -12,6 +13,8 @@ const GroupModify = () => {
   const [group, setGroup] = useState({});
   const [type, setType] = useState('');
   const [title, setTitle] = useState('');
+  const [errorStatus, setErrorStatus] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     getGroup(id, setGroup);
@@ -24,29 +27,45 @@ const GroupModify = () => {
 
   const handleSubmitGroupAdd = async (event) => {
     event.preventDefault();
-    const resp = await modifyGroup({
-      id,
-      type,
-      title,
-    });
-    if (resp.success === true) {
-      navigationHandler('/groups');
+
+    setErrorStatus(false);
+    setErrorMessage('');
+    try {
+      const resp = await modifyGroup({
+        id,
+        type,
+        title,
+      });
+      if (resp.success === true) {
+        navigationHandler('/groups');
+      } else {
+        setErrorStatus(true);
+        setErrorMessage(
+          resp.error[0][0]?.message ||
+            resp.error[0] ||
+            'Klaida koreguojant grupę'
+        );
+      }
+    } catch (err) {
+      setErrorStatus(true);
+      setErrorMessage(err.message);
     }
   };
 
   return (
     <>
-    <Header />
-    <S.Container>
-      {!!type && <GroupForm
-        group={{ id, title, type }}
-        setTitle={setTitle}
-        setType={setType}
-      ></GroupForm>
-}
-      <S.Button onClick={handleSubmitGroupAdd}>Keisti grupę</S.Button>
-
-    </S.Container>
+      <Header />
+      <S.Container>
+        {errorStatus && <Notification>{errorMessage}</Notification>}
+        {!!type && (
+          <GroupForm
+            group={{ id, title, type }}
+            setTitle={setTitle}
+            setType={setType}
+          ></GroupForm>
+        )}
+        <S.Button onClick={handleSubmitGroupAdd}>Keisti grupę</S.Button>
+      </S.Container>
     </>
   );
 };

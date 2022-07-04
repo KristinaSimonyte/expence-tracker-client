@@ -8,6 +8,8 @@ import {
   modifyTransaction,
 } from '../../controllers/apiRequests';
 import * as S from './TransactionModify.style';
+import Notification from '../../components/Notification/Notification';
+
 const TransactionModify = () => {
   const { id } = useParams();
   const navigationHandler = useNavigate();
@@ -19,6 +21,9 @@ const TransactionModify = () => {
   const [groupId, setGroupId] = useState('');
   const [groups, setGroups] = useState([]);
   const [groupOptions, setGroupOptions] = useState([]);
+
+  const [errorStatus, setErrorStatus] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     getGroups(setGroups);
@@ -47,15 +52,30 @@ const TransactionModify = () => {
 
   const saveTransactionHandle = async (event) => {
     event.preventDefault();
-    const resp = await modifyTransaction({
-      id,
-      groupId,
-      transactionDate,
-      amount,
-      comment,
-    });
-    if (resp.success === true) {
-      navigationHandler('/transactions');
+
+    setErrorStatus(false);
+    setErrorMessage('');
+    try {
+      const resp = await modifyTransaction({
+        id,
+        groupId,
+        transactionDate,
+        amount,
+        comment,
+      });
+      if (resp.success === true) {
+        navigationHandler('/transactions');
+      } else {
+        setErrorStatus(true);
+        setErrorMessage(
+          resp.error[0][0]?.message ||
+            resp.error[0] ||
+            'Klaida redaguojant transakciją'
+        );
+      }
+    } catch (err) {
+      setErrorStatus(true);
+      setErrorMessage(err.message);
     }
   };
 
@@ -63,6 +83,7 @@ const TransactionModify = () => {
     <>
       <Header />
       <h1>Modify transaction form</h1>
+      {errorStatus && <Notification>{errorMessage}</Notification>}
       <TransactionForm
         transaction={{ id, amount, transactionDate, comment, groupId }}
         groupOptions={groupOptions}
