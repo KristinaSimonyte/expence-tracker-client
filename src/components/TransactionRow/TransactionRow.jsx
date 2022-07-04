@@ -29,7 +29,7 @@ TransactionRow.propTypes = {
   id: PropTypes.number.isRequired,
   amount: PropTypes.number.isRequired,
   transactionDate: PropTypes.string.isRequired,
-  type: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
   comment: PropTypes.string,
 };
 export default TransactionRow;
