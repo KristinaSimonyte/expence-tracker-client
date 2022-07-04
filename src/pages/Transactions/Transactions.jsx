@@ -17,7 +17,7 @@ const Transactions = () => {
     getBalance(setBalance);
   }, []);
 
-  console.log(balance);
+
   return (
     <>
       <Header />

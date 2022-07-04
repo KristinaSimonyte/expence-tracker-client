@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import GroupAdd from './pages/Groups/GroupAdd';
@@ -13,9 +13,14 @@ import Transactions from './pages/Transactions/Transactions';
 import { AuthContext } from './store/authContext';
 
 const Router = () => {
-  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
+  useEffect(() => {
+    setIsLoggedIn(false);
+    if (localStorage.getItem('token')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
   function login(userToken) {
     localStorage.setItem('token', userToken);
     setIsLoggedIn(true);
@@ -26,12 +31,10 @@ const Router = () => {
   }
 
   function isUserLoggedIn() {
+    setIsLoggedIn(false);
     if (localStorage.getItem('token')) {
       setIsLoggedIn(true);
-      return true;
     }
-    setIsLoggedIn(false);
-    return false;
   }
 
   const ctxValue = {
@@ -41,8 +44,8 @@ const Router = () => {
     isUserLoggedIn,
   };
   return (
-    <AuthContext.Provider value={ctxValue}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthContext.Provider value={ctxValue}>
         <Routes>
           <Route
             path='/'
@@ -106,8 +109,8 @@ const Router = () => {
             }
           />
         </Routes>
-      </BrowserRouter>
-    </AuthContext.Provider>
+      </AuthContext.Provider>
+    </BrowserRouter>
   );
 };
 

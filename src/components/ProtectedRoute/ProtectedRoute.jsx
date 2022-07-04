@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../../store/authContext';
 
 const ProtectedRoute = ({ children, redirectPage }) => {
-  const authContext = useContext(AuthContext);
- 
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  useEffect(()=>{
+    if (!localStorage.getItem('token')) {
+      setIsLoggedIn(false);
+    }
+  },[]);
 
-  //console.log(authContext.isUserLoggedIn());
 
-  if (authContext.isLoggedIn) {
+  if (isLoggedIn) {
     return children;
   } else {
     return <Navigate to={redirectPage} />;
