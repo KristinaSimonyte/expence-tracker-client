@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import { AuthContext } from '../../store/authContext';
+import Notification from '../../components/Notification/Notification';
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
@@ -14,35 +15,40 @@ const Login = () => {
     password: '',
   });
 
+  const [errorStatus, setErrorStatus] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const navigate = useNavigate();
 
   const onLogin = async (event) => {
-
     event.preventDefault();
-    // console.log(userDetails);
+
+    setErrorStatus(false);
+    setErrorMessage('');
+
     try {
-      const res = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userDetails),
-        }
-        );
-       //  console.log(res);
-        const data = await res.json();
-        if (data.success) {
-         // localStorage.setItem('token', data.data.token);
-          authCtx.login(data.data.token);
-          // setIsSuccessLogin (true);
-          setTimeout(() => {
-            navigate('/transactions');
-          }, 1000);
-        }
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userDetails),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        authCtx.login(data.data.token);
+
+        setTimeout(() => {
+          navigate('/transactions');
+        }, 1000);
+      } else {
+        setErrorStatus(true);
+        setErrorMessage(data.error[0][0]?.message || data.error[0]|| 'Klaida prisijungiant');
+      }
     } catch (err) {
-      alert(err.message || 'Unexpected Issue');
+      setErrorStatus(true);
+      setErrorMessage(err.message);
     }
   };
 
@@ -50,6 +56,7 @@ const Login = () => {
     <>
       <Header />
       <Section>
+      {errorStatus && <Notification>{errorMessage}</Notification>}
         <form onSubmit={onLogin}>
           <TextInput
             label='Email:'

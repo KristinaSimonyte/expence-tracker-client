@@ -41,10 +41,9 @@ const Register = () => {
         }, 1000);
       } else {
         setErrorStatus(true);
-        setErrorMessage(data.error[0][0]?.message || 'Klaida registruojantis');
+        setErrorMessage(data.error[0][0]?.message || data.error[0]|| 'Klaida prisijungiant');
       }
     } catch (err) {
-      alert(err.message || 'Unexpected Issue');
       setErrorStatus(true);
       setErrorMessage(err.message);
     }
